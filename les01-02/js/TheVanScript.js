@@ -1,31 +1,48 @@
 (function() {
     "use strict";
     
+    // GLOBAL VARIABLES
+    
     let globalImages;
     
     // FUNCTIONS
-    let addTitles = function() {
-        let images = document.querySelectorAll("img");
-        globalImages = images;
-        for (let singleImage of images){
-            singleImage.title = singleImage.alt;
+    
+    // Setting all alt texts to be equal to the title texts.
+    let addTitles = function(){
+        console.log('\n');
+        globalImages = document.querySelectorAll("img");
+        
+        for (let image of globalImages){
+            image.title = image.alt;
         }
-        console.log(`${images.length} image(s) with new (copied) alt text.`);
+        console.log(`${globalImages.length} image(s) with filled in (copied) alt text.`);
     }
     
-    let state = true;
-    let disableImgSource = function() {
-        if (state)
-            for (let singleImage of globalImages){
-                singleImage.src = singleImage.src + "X";
-                console.log(singleImage.src);
-                state = false;
+    // Working with a global variable:
+    let imageIsVisible = true;
+    // working with an element property:
+    let imgSourceButton = document.getElementById("btnImgSource");
+    
+    // Showing the alt texts by sabotaging the image source attribute.
+    let sabotageImgSource = function(){
+        console.log('\n');
+        
+        if (imageIsVisible && imgSourceButton.style.backgroundColor == "green")
+            for (let image of globalImages){
+                image.src = image.src + "X";
+                console.log(`New image source: ${image.src}`);
+                
+                imageIsVisible = false;
+                imgSourceButton.style.backgroundColor = "red";
             }
         
         else
-            for (let singleImage of globalImages){
-                singleImage.src = singleImage.src.substr(0, singleImage.src.length-1);
-                state = true;
+            for (let image of globalImages){
+                image.src = image.src.substr(0, image.src.length-1);
+                console.log(`Image source restored to: ${image.scr}`);
+                
+                imageIsVisible = true;
+                imgSourceButton.style.backgroundColor = "green";
             }
             
     }
@@ -34,10 +51,10 @@
     let testingSomeStuff = function() {
         console.log("Starting test:")
         // collection all images...
-        let images = document.querySelectorAll("img");
+        let globalImages = document.querySelectorAll("img");
         
         // test on first entry
-        let image = images[0];
+        let image = globalImages[0];
         
         // testing referencing
         console.log(`\nImage title: ${image.title}`);
@@ -58,13 +75,21 @@
     // EVENTS
     window.addEventListener('load', function() {
         addTitles();
-        disableImgSource();
-        disableImgSource(false);
+        console.log(`default: `);
+        console.log(globalImages[0].src);
+        globalImages[0].src = globalImages[0].src + "X";
+        console.log(globalImages[0].src);
+        console.log(globalImages[0].src.substr(0, globalImages[0].src.length-1));/*
+        sabotageImgSource();
+        console.log(globalImages[0].src);
+        sabotageImgSource();
+        console.log(globalImages[0].src);*/
+        
         //testingSomeStuff();
     });
     
-    document.getElementById("TEST").addEventListener('click', function() {
-        disableImgSource();
+    document.getElementById("btnImgSource").addEventListener('click', function() {
+        sabotageImgSource();
     });
 })();
 
