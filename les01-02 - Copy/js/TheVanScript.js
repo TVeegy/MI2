@@ -13,8 +13,7 @@
         globalImages = document.querySelectorAll("img");
         
         for (let image of globalImages){
-            image.alt = image.title;
-            console.log(`from title ${image.title} to alt ${image.alt}`);
+            image.title = image.alt;
         }
         console.log(`${globalImages.length} image(s) with filled in (copied) alt text.`);
     }
@@ -35,21 +34,23 @@
                 
                 imageIsVisible = false;
                 imgSourceButton.style.backgroundColor = "red";
+                console.log("FIRST");
             }
         
         else
             for (let image of globalImages){
                 image.src = image.src.substr(0, image.src.length-1);
-                console.log(`Image source restored to: ${image.src}`);
+                console.log(`Image source restored to: ${image.scr}`);
                 
                 imageIsVisible = true;
                 imgSourceButton.style.backgroundColor = "green";
+                console.log("SECOND");
             }   
     }
     
     // TESTING FUNCTIONS
     let testingSomeStuff = function() {
-        console.log("Starting test:");
+        console.log("Starting test:")
         // collection all images...
         let globalImages = document.querySelectorAll("img");
         
