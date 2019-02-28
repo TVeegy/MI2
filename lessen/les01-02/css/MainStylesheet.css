@@ -19,6 +19,26 @@ body {
     vertical-align: top;
 }
 
+/* Button Image toggling */
+#btnImgSource {
+    width: 150px;
+    height: 30px;
+    
+    margin: 10px;
+    padding: 5px;
+    
+    background-color: green;
+    color: white;
+    border: solid black 1.5px;
+    
+    transition: color 1s;
+    
+}
+#btnImgSource:hover {
+    color: yellow;
+}
+
+/* Image, buttons and slider */
 #vanContainer {
     display: flex;
     flex-direction: column;
@@ -45,23 +65,6 @@ body {
     color: white;
 }
 
-#btnImgSource {
-    width: 150px;
-    height: 30px;
-    
-    margin: 10px;
-    padding: 5px;
-    
-    background-color: green;
-    color: white;
-    border: solid black 1.5px;
-    
-    transition: width 0.5s, height 0.5s, color 1s;
-    
-}
-#btnImgSource:hover {
-    width: 155px;
-    height: 35px;
-    
-    color: yellow;
+#opacitySlider{
+    width: 200px;
 }

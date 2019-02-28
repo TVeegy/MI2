@@ -1,6 +1,8 @@
 (function() {
     "use strict";
     
+    //OnChanged Event
+
     // GLOBAL VARIABLES
     
     let globalImages;
@@ -13,7 +15,8 @@
         globalImages = document.querySelectorAll("img");
         
         for (let image of globalImages){
-            image.title = image.alt;
+            image.alt = image.title;
+            console.log(`from title ${image.title} to alt ${image.alt}`);
         }
         console.log(`${globalImages.length} image(s) with filled in (copied) alt text.`);
     }
@@ -34,23 +37,21 @@
                 
                 imageIsVisible = false;
                 imgSourceButton.style.backgroundColor = "red";
-                console.log("FIRST");
             }
         
         else
             for (let image of globalImages){
                 image.src = image.src.substr(0, image.src.length-1);
-                console.log(`Image source restored to: ${image.scr}`);
+                console.log(`Image source restored to: ${image.src}`);
                 
                 imageIsVisible = true;
                 imgSourceButton.style.backgroundColor = "green";
-                console.log("SECOND");
             }   
     }
     
     // TESTING FUNCTIONS
     let testingSomeStuff = function() {
-        console.log("Starting test:")
+        console.log("Starting test:");
         // collection all images...
         let globalImages = document.querySelectorAll("img");
         
