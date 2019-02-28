@@ -30,13 +30,10 @@ body {
     color: white;
     border: solid black 1.5px;
     
-    transition: width 0.5s, height 0.5s, color 1s;
+    transition: color 1s;
     
 }
 #btnImgSource:hover {
-    width: 155px;
-    height: 35px;
-    
     color: yellow;
 }
 
