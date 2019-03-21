@@ -88,6 +88,7 @@ body {
     top: -5px;
     width: 45rem;
     transition: 500ms; /*of 0.5s*/
+    /* /*onzeker/* transition-property: transform;*/
 }
 
 .loginmodal--verborgen {

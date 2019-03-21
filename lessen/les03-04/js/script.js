@@ -23,10 +23,15 @@
     /* -------------------- Checking email -------------------- */
     let form = document.getElementById('login__form');
     form.addEventListener('submit', 
-    function() {
+    function(e) {
         // verberg loginmodal
         console.log(`email: ${form.elements[0].value}\nwachtwoord: ${form.elements[1].value}`);
         
+        // display errPwd op none-block zetten
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // regex expressie ivm validatie
         let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (re.test(String(form.elements[0].value).toLowerCase()))
             document.getElementById('loginmodal').classList.add('loginmodal--verborgen');
